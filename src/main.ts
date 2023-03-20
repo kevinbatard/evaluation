@@ -8,15 +8,15 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/');
   const config = new DocumentBuilder()
-    .setTitle('Japan travels')
-    .setDescription('Partagez vos souvenirs de voyage, ou préparez le votre !')
+    .setTitle('Evaluation')
+    .setDescription('Dashboard pour admin')
     .setVersion('1.0')
-    .addTag('Japan')
+    .addTag('Eval')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe()); //Nécessaire à l'utilisation des class-validator dans le DTO
 
   await app.listen(8000);
 }
