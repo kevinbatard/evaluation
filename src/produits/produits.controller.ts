@@ -26,6 +26,7 @@ export class ProduitsController {
     const product = await this.produitsService.create(createProduitDto);
 
     return {
+      statuscode: 201,
       message: 'Produit posté !',
       data: product,
     };
@@ -38,7 +39,9 @@ export class ProduitsController {
   @Get()
   async findAll() {
     const allProduct = await this.produitsService.findAll();
+
     return {
+      statuscode: 200,
       message: 'Voici tout les produits enregistrés',
       data: allProduct,
     };
@@ -65,6 +68,7 @@ export class ProduitsController {
     );
 
     return {
+      statuscode: 201,
       message: `Le produit n°${id} à bien été modifié`,
       data: updateProduct,
     };
@@ -84,6 +88,7 @@ export class ProduitsController {
     this.produitsService.remove(isExist);
 
     return {
+      statuscode: 201,
       message: `Le produit n°${id} à bien été supprimé`,
     };
   }
